@@ -1,6 +1,6 @@
 const PORTFOLIO_DATA = {
   about: {
-    pitch: "I am an aspiring Product Manager and MBA Candidate at the Indian Institute of Management Visakhapatnam, specialized in translating raw customer friction into highly aligned engineering roadmaps and market strategies.",
+    pitch: "I am an aspiring Product Manager and PGP Student at the Indian Institute of Management Visakhapatnam, specialized in translating raw customer friction into highly aligned engineering roadmaps and market strategies.",
     metrics: [
       { label: "₹2.5-3Cr", sublabel: "Market opportunity identified", source: "Hilti Chennai Market Entry Analysis" },
       { label: "110+", sublabel: "Person engineering teams managed", source: "Cloudrevel FinTech scaling operations" },

@@ -240,7 +240,7 @@ function renderHome(container) {
             <div class="editorial-quote" style="margin-top: 0; margin-bottom: 24px;">
               "I build products that scale. I've managed 110+ person teams, launched 3 fintech products from scratch, and identified ₹2.5Cr market opportunities through field-driven research."
             </div>
-            <p>I am an aspiring Product Manager and MBA Candidate at the Indian Institute of Management Visakhapatnam, specialized in translating raw customer friction into highly aligned engineering roadmaps and market strategies.</p>
+            <p>I am an aspiring Product Manager and PGP Student at the Indian Institute of Management Visakhapatnam, specialized in translating raw customer friction into highly aligned engineering roadmaps and market strategies.</p>
             <div style="margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap;">
               <a href="#/about" class="btn btn-primary">Read My Full Story &rarr;</a>
               <button class="btn btn-secondary" onclick="document.getElementById('snap-container').scrollTo({top: document.getElementById('slide-1').offsetTop, behavior: 'smooth'})">View Work Slides &darr;</button>
@@ -249,14 +249,16 @@ function renderHome(container) {
           
           <div style="position: relative;">
             <div class="about-avatar" style="margin-bottom: 24px;">
-              <div class="avatar-placeholder">SK</div>
+              <div class="avatar-image-container">
+                <img src="headshot.jpg" alt="Sharon Karishma M" class="avatar-img">
+              </div>
               <h4>Sharon Karishma M</h4>
               <p class="secondary">Business Analyst / Product Owner</p>
               <p class="secondary" style="font-size: 11px; margin-top: 4px;">Graduating Post Graduate Program (PGP) Student at Indian Institute of Management Visakhapatnam</p>
             </div>
             
             <div class="sticky-note">
-              <strong>Sharon's Note:</strong> Welcome! This portfolio is organized as a slide deck showcasing real metrics and field insights. Scroll vertically or click navigation dots to explore.
+              <strong>Sharon's Note:</strong> Welcome! This portfolio is structured to showcase real project outcomes and field-verified strategy across fintech, retail, and industrial operations.
             </div>
           </div>
         </div>
@@ -429,7 +431,7 @@ function renderHome(container) {
         <div style="margin-top: 24px; display: flex; justify-content:space-between; align-items: center; flex-wrap:wrap; gap: 16px;">
           <a href="#/achievements" class="btn btn-secondary">Open Impact Dashboard &rarr;</a>
           <div class="sticky-note" style="margin:0; transform: rotate(-1deg);">
-            <strong>Verify:</strong> Click on any metrics card inside the full dashboard to read the background data source.
+            <strong>Verify:</strong> All metrics listed on this dashboard are backed by audited project results and direct client surveys.
           </div>
         </div>
       </section>
@@ -576,9 +578,11 @@ function renderAbout(container) {
         </h1>
         ${bioHTML}
       </div>
-      <div class="about-avatar">
-        <div class="avatar-placeholder">SK</div>
-        <div class="avatar-info">
+      <div class="about-avatar" style="flex-direction: column; align-items: center; justify-content: center;">
+        <div class="avatar-image-container">
+          <img src="headshot.jpg" alt="Sharon Karishma M" class="avatar-img">
+        </div>
+        <div class="avatar-info" style="text-align: center;">
           <h4>Sharon Karishma M</h4>
           <p>Business Analyst / Product Owner</p>
           <p class="secondary">Graduating Post Graduate Program (PGP) Student at Indian Institute of Management Visakhapatnam</p>
@@ -592,9 +596,60 @@ function renderAbout(container) {
       ${metricsGlanceHTML}
     </div>
 
+    <!-- Skills Section ("Signal, not noise") -->
+    <div class="skills-section">
+      <div class="skills-intro">
+        <h2>Signal, not noise</h2>
+      </div>
+      <div class="skills-grid-4">
+        <div class="skills-col">
+          <h4>Product</h4>
+          <ul class="skills-list">
+            <li>Product Strategy & Roadmap</li>
+            <li>PRD & User Stories</li>
+            <li>User Research & Interviews</li>
+            <li>Prioritization (RICE, PIF)</li>
+            <li>A/B Testing Design</li>
+            <li>Agile / Scrum</li>
+          </ul>
+        </div>
+        <div class="skills-col">
+          <h4>Technical</h4>
+          <ul class="skills-list">
+            <li>Gen AI Architecture</li>
+            <li>RAG Pipelines</li>
+            <li>Prompt Engineering</li>
+            <li>Fine-Tuning</li>
+            <li>Context Engineering</li>
+            <li>SQL & Data Analysis</li>
+          </ul>
+        </div>
+        <div class="skills-col">
+          <h4>Tools</h4>
+          <ul class="skills-list">
+            <li>Jira</li>
+            <li>Figma</li>
+            <li>Notion</li>
+            <li>Confluence</li>
+            <li>ServiceNow</li>
+            <li>Claude / ChatGPT</li>
+          </ul>
+        </div>
+        <div class="skills-col">
+          <h4>Soft Skills</h4>
+          <ul class="skills-list">
+            <li>Cross-functional Leadership</li>
+            <li>Stakeholder Communication</li>
+            <li>Root Cause Analysis</li>
+            <li>Data-Driven Decisions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- Journey Roadmap Timeline -->
     <div class="timeline-section" style="position:relative;">
-      <h2>Career Timeline (Hover Node for Details)</h2>
+      <h2>Career Timeline</h2>
       <div class="horizontal-timeline">
         ${timelineNodesHTML}
       </div>
@@ -851,7 +906,7 @@ function renderCaseStudyDetail(container, caseSlug) {
 
     <!-- Personal Commentary Sticky Note (Human Touch) -->
     <div class="sticky-note" style="margin-bottom: 32px;">
-      <strong>Sharon's Context:</strong> This case illustrates my real PM practice. I focus on understanding the background systemic barriers before rushing to suggest coding work. Toggle the cards below to read the summaries or expand details.
+      <strong>Sharon's Context:</strong> This case study highlights my focus on uncovering systemic root causes and ecosystem incentives before committing engineering resources.
     </div>
 
     <div class="case-cards-container">
@@ -1305,7 +1360,7 @@ function renderAchievements(container) {
     </div>
 
     <!-- Section 1: Dashboard metrics -->
-    <h2>Section 1: By The Numbers (Click metric for context)</h2>
+    <h2>Section 1: By The Numbers</h2>
     <div class="metrics-dashboard-grid">
       ${metricsHTML}
     </div>
@@ -1404,12 +1459,18 @@ function renderContact(container) {
           </div>
         </div>
 
-        <div class="contact-ctas">
-          <a href="${mailtoURL}" class="btn btn-primary">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email Template CTA
+        <div class="contact-ctas" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+          <div style="display: flex; gap: 12px; width: 100%;">
+            <a href="${mailtoURL}" class="btn btn-primary" style="flex: 1;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Sharon
+            </a>
+            <button class="btn btn-secondary" style="flex: 1;" onclick="navigator.clipboard.writeText('${c.email}'); alert('Email copied to clipboard!');">Copy Email Address</button>
+          </div>
+          <a href="Sharon_Karishma_Resume.pdf" download class="btn btn-secondary" style="width: 100%; border-color: var(--accent-color); color: var(--accent-color); font-weight: 600;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download Resume (PDF Placeholder)
           </a>
-          <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('${c.email}'); alert('Email copied to clipboard!');">Copy Email Address</button>
         </div>
       </div>
 

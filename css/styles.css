@@ -20,55 +20,61 @@
   --section-padding: 40px;
   --card-gap: 20px;
 
-  /* LIGHT MODE (Warm, organic, editorial palette) */
-  --bg-color: #FAF8F4;        /* Warm Alabaster Cream */
-  --text-color: #1E2022;      /* Off-charcoal for softer readability */
-  --accent-color: #1D4ED8;    /* Premium Royal Blue */
-  --accent-hover: #1E40AF;
-  --secondary-color: #5C626A;  /* Soft Slate Gray */
-  --border-color: #E6DFD3;     /* Warm Creamy Beige border */
+  /* LIGHT MODE (Ivory & Antique Gold/Bronze) */
+  --bg-color: #FCFAF6;        /* Rich Warm Ivory */
+  --text-color: #1A1A1A;      /* High contrast black */
+  --accent-color: #9C7A3C;    /* Antique Bronze Gold */
+  --accent-hover: #7E6230;
+  --secondary-color: #5C6066;  /* Contrast charcoal gray */
+  --border-color: #E8E2D5;     /* Soft warm border */
   --card-bg: #FFFFFF;
-  --card-shadow: 0 4px 12px rgba(92, 98, 106, 0.04), 0 2px 4px rgba(92, 98, 106, 0.02);
-  --card-shadow-hover: 0 16px 28px rgba(92, 98, 106, 0.08), 0 4px 8px rgba(92, 98, 106, 0.04);
-  --header-bg: rgba(250, 248, 244, 0.85);
-  --tag-bg: #EFEBE4;          /* Warm tag backgrounds */
-  --tag-text: #2D3136;
-  --loader-color: #1D4ED8;
-  --timeline-line: #E6DFD3;
-  --timeline-dot: #1D4ED8;
+  --card-shadow: 0 4px 12px rgba(156, 122, 60, 0.03), 0 2px 4px rgba(156, 122, 60, 0.02);
+  --card-shadow-hover: 0 16px 28px rgba(156, 122, 60, 0.06), 0 4px 8px rgba(156, 122, 60, 0.03);
+  --header-bg: rgba(252, 250, 246, 0.85);
+  --tag-bg: #F5EFE4;
+  --tag-text: #1A1A1A;
+  --loader-color: #9C7A3C;
+  --timeline-line: #E8E2D5;
+  --timeline-dot: #9C7A3C;
   --timeline-bg: #FFFFFF;
   --dashboard-bg: #FFFFFF;
-  
+
+  /* Button / Badge Text Color */
+  --btn-text-color: #FFFFFF;  /* White text on dark gold button */
+
   /* Sticky Note colors (Light) */
   --sticky-bg: #FEF9C3;       /* Pastel Yellow */
   --sticky-text: #713F12;     /* Brown text */
   --sticky-border: #FEF08A;
 }
 
-/* DARK MODE */
+/* DARK MODE (Midnight Black & Metallic Gold) */
 body.dark-theme {
-  --bg-color: #0E121E;        /* Deep Warm Navy bg */
-  --text-color: #E2E8F0;
-  --accent-color: #3B82F6;    /* Lighter Sky Blue */
-  --accent-hover: #60A5FA;
-  --secondary-color: #94A3B8;
-  --border-color: #222C3F;     /* Subtle navy borders */
-  --card-bg: #161D2F;         /* Rich Slate Navy card bg */
-  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
-  --card-shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.2);
-  --header-bg: rgba(14, 18, 30, 0.85);
-  --tag-bg: #222C3F;
-  --tag-text: #F1F5F9;
-  --loader-color: #3B82F6;
-  --timeline-line: #222C3F;
-  --timeline-dot: #3B82F6;
-  --timeline-bg: #161D2F;
-  --dashboard-bg: #161D2F;
+  --bg-color: #050505;        /* Pure Pitch Black */
+  --text-color: #F5F5F7;      /* Bright warm white, highly legible */
+  --accent-color: #D4AF37;    /* Metallic Gold */
+  --accent-hover: #F3C63F;    /* Lighter bright gold */
+  --secondary-color: #A1A1AA;  /* Muted gray, high contrast on black */
+  --border-color: #262626;     /* Dark charcoal borders */
+  --card-bg: #121212;         /* Elevated card black background */
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --card-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 4px rgba(212, 175, 55, 0.15);
+  --header-bg: rgba(5, 5, 5, 0.85);
+  --tag-bg: #262626;
+  --tag-text: #F5F5F7;
+  --loader-color: #D4AF37;
+  --timeline-line: #262626;
+  --timeline-dot: #D4AF37;
+  --timeline-bg: #121212;
+  --dashboard-bg: #121212;
+
+  /* Button / Badge Text Color */
+  --btn-text-color: #050505;  /* High contrast black text on gold buttons/badges */
 
   /* Sticky Note colors (Dark) */
-  --sticky-bg: #272A1C;       /* Soft dark gold/olive */
-  --sticky-text: #FEF08A;
-  --sticky-border: #3F3F2E;
+  --sticky-bg: #1C1917;       /* Dark warm charcoal sticky note */
+  --sticky-text: #FDE047;     /* Bright yellow gold text */
+  --sticky-border: #44403C;
 }
 
 /* Base Styles */
@@ -254,7 +260,7 @@ button {
 
 .btn-primary {
   background-color: var(--accent-color);
-  color: #FFFFFF;
+  color: var(--btn-text-color);
 }
 
 .btn-primary:hover {
@@ -699,7 +705,7 @@ body.dark-theme .moon-icon {
   height: 100px;
   border-radius: 50%;
   background-color: var(--accent-color);
-  color: #FFFFFF;
+  color: var(--btn-text-color);
   font-family: var(--font-serif);
   font-size: 36px;
   font-weight: 600;
@@ -966,7 +972,7 @@ body.dark-theme .moon-icon {
 
 .case-preview-badge {
   background-color: var(--accent-color);
-  color: #FFFFFF;
+  color: var(--btn-text-color);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -1199,7 +1205,7 @@ body.dark-theme .moon-icon {
 
 .filter-btn.active {
   background-color: var(--accent-color);
-  color: #FFFFFF;
+  color: var(--btn-text-color);
   border-color: var(--accent-color);
 }
 
@@ -1477,7 +1483,7 @@ body.dark-theme .moon-icon {
   height: 48px;
   border-radius: 50%;
   background-color: var(--accent-color);
-  color: #FFFFFF;
+  color: var(--btn-text-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2039,3 +2045,112 @@ body.dark-theme .moon-icon {
     flex-direction: column;
   }
 }
+
+
+/* Avatar Image Styles */
+.avatar-image-container {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  background-color: var(--card-bg);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--hover-speed);
+}
+
+.avatar-image-container:hover {
+  transform: scale(1.05);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Skills Section ("Signal, not noise") */
+.skills-section {
+  margin-bottom: 48px;
+}
+
+.skills-intro h2 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: var(--text-color);
+}
+
+.skills-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--card-gap);
+  margin-bottom: 24px;
+}
+
+.skills-col {
+  padding: 24px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px 16px 14px 15px / 15px 13px 16px 12px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--hover-speed), border-color var(--hover-speed);
+}
+
+.skills-col:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+}
+
+.skills-col h4 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skills-list li {
+  font-size: 13.5px;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 16px;
+  color: var(--text-color);
+}
+
+.skills-list li::before {
+  content: '•';
+  color: var(--accent-color);
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+@media (max-width: 900px) {
+  .skills-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
