@@ -89,6 +89,10 @@ function router() {
   const hash = window.location.hash || '#/';
   const appView = document.getElementById('app-view');
   
+  // Reset progress bar
+  const progress = document.getElementById('progress');
+  if (progress) progress.style.width = '0%';
+  
   // Show loader
   appView.innerHTML = `
     <div class="loader-view">
@@ -231,233 +235,215 @@ function manageLayoutBars(path) {
 function renderHome(container) {
   container.innerHTML = `
     <div class="snap-container" id="snap-container">
-      <!-- Slide 1: Welcome & Pitch -->
-      <section class="snap-slide" id="slide-0">
-        <div class="slide-grid-2">
-          <div class="about-pitch">
-            <div class="case-domain-tag">Executive Summary</div>
-            <h1 style="font-size: 42px; margin-bottom: 20px;">Sharon Karishma M</h1>
-            <div class="editorial-quote" style="margin-top: 0; margin-bottom: 24px;">
-              "I build products that scale. I've managed 110+ person teams, launched 3 fintech products from scratch, and identified ₹2.5Cr market opportunities through field-driven research."
+      <!-- Slide 0: Split Welcome Hero -->
+      <section class="snap-slide" id="slide-0" style="padding: 0;">
+        <div class="hero-split-container">
+          <div class="hero-portrait-col">
+            <img src="headshot.jpg" alt="Sharon Karishma M" class="hero-portrait-image">
+            <div class="hero-photo-bar">
+              <span>Business Analyst / Product Owner</span>
             </div>
-            <p>I am an aspiring Product Manager and PGP Student at the Indian Institute of Management Visakhapatnam, specialized in translating raw customer friction into highly aligned engineering roadmaps and market strategies.</p>
-            <div style="margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap;">
-              <a href="#/about" class="btn btn-primary">Read My Full Story &rarr;</a>
-              <button class="btn btn-secondary" onclick="document.getElementById('snap-container').scrollTo({top: document.getElementById('slide-1').offsetTop, behavior: 'smooth'})">View Work Slides &darr;</button>
+            <div class="hero-photo-tag">Product Owner</div>
+          </div>
+          <div class="hero-text-col">
+            <div class="hero-eyebrow-num">01 / 06</div>
+            <h1 class="hero-name-header">Sharon<br>Karishma M</h1>
+            <div class="hero-quote">
+              I bridge the gap between engineering rigor and customer empathy to build products that scale.
             </div>
+            <p class="hero-description">
+              Aspiring Product Manager and graduating Post Graduate Program (PGP) student at the Indian Institute of Management Visakhapatnam. Specializing in translating raw customer friction into highly aligned engineering roadmaps and market strategies.
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="#/about" class="btn btn-primary" style="background-color: var(--color-dark); color: var(--color-light); border: 1px solid var(--color-dark);">Read Full Bio</a>
+              <button class="btn btn-secondary" style="border-color: var(--color-light); color: var(--color-light);" onclick="document.getElementById('snap-container').scrollTo({top: document.getElementById('slide-1').offsetTop, behavior: 'smooth'})">View Work Slides &darr;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 1: Case Studies (Red Background) -->
+      <section class="snap-slide" id="slide-1" style="background-color: var(--color-red); color: var(--color-light);">
+        <div class="slide-header-bold">
+          <div class="hero-eyebrow-num" style="margin-bottom:12px;">02 / 06</div>
+          <h2 style="color: var(--color-light); font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; font-weight:900; margin-bottom: 8px;">Featured <em>Case Studies</em></h2>
+          <p style="color: rgba(255,255,255,0.85); font-size: 14px; max-width: 500px; margin-bottom: 32px;">Proven capabilities in scaling operations, market expansion strategy, and queue layout engineering.</p>
+        </div>
+        <div class="slide-grid-3">
+          <div class="tile-card editorial-card-dark" onclick="window.location.hash='#/cases/cloudrevel'">
+            <div class="tile-content">
+              <span class="card-category">Scale Story</span>
+              <h3>Cloudrevel</h3>
+              <p>Scaling PM processes across 3 fintech products with 110+ engineers, aligning stakeholder priorities, and reducing dev handoff issues.</p>
+            </div>
+            <div class="tile-cta">Read Case Study &rarr;</div>
           </div>
           
-          <div style="position: relative;">
-            <div class="about-avatar" style="margin-bottom: 24px;">
-              <div class="avatar-image-container">
-                <img src="headshot.jpg" alt="Sharon Karishma M" class="avatar-img">
-              </div>
-              <h4>Sharon Karishma M</h4>
-              <p class="secondary">Business Analyst / Product Owner</p>
-              <p class="secondary" style="font-size: 11px; margin-top: 4px;">Graduating Post Graduate Program (PGP) Student at Indian Institute of Management Visakhapatnam</p>
+          <div class="tile-card editorial-card-dark" onclick="window.location.hash='#/cases/hilti'">
+            <div class="tile-content">
+              <span class="card-category">Strategy Story</span>
+              <h3>Hilti India</h3>
+              <p>Uncovering value chain fragmentation in Chennai M&E market from direct site research, mapping a ₹2.5-3Cr opportunity.</p>
             </div>
-            
-            <div class="sticky-note">
-              <strong>Sharon's Note:</strong> Welcome! This portfolio is structured to showcase real project outcomes and field-verified strategy across fintech, retail, and industrial operations.
+            <div class="tile-cta">Read Case Study &rarr;</div>
+          </div>
+
+          <div class="tile-card editorial-card-dark" onclick="window.location.hash='#/cases/walmart'">
+            <div class="tile-content">
+              <span class="card-category">Execution Story</span>
+              <h3>Walmart BOPIS</h3>
+              <p>Optimizing online-pickup wait times and queue layouts by blending geofenced customer alerts with entrance QR-pickup lockers.</p>
             </div>
+            <div class="tile-cta">Read Case Study &rarr;</div>
           </div>
         </div>
       </section>
 
-      <!-- Slide 2: Case Studies -->
-      <section class="snap-slide" id="slide-1">
-        <div class="slide-header">
-          <div class="case-domain-tag">Featured Work</div>
-          <h2>Product Case Studies</h2>
-          <p class="secondary">Proven capabilities in scaling, strategic reframing, and operational redesign.</p>
+      <!-- Slide 2: Product Teardowns (White Background) -->
+      <section class="snap-slide" id="slide-2" style="background-color: var(--color-light); color: var(--color-dark);">
+        <div class="slide-header-bold">
+          <div class="hero-eyebrow-num" style="margin-bottom:12px; color: var(--color-red);"><span style="color: var(--color-red);">03 / 06</span></div>
+          <h2 style="color: var(--color-dark); font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; font-weight:900; margin-bottom: 8px;">Product <em>Teardowns</em></h2>
+          <p style="color: var(--secondary-color); font-size: 14px; max-width: 500px; margin-bottom: 32px;">Critical evaluation of customer hooks, retention mechanics, and strategy across 18+ digital applications.</p>
         </div>
         <div class="slide-grid-3">
-          <div class="tile-card organic-card" onclick="window.location.hash='#/cases/cloudrevel'">
-            <div>
-              <div class="tile-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div class="tile-content">
-                <h3>Cloudrevel</h3>
-                <p class="secondary" style="font-size:11px; text-transform:uppercase; font-weight:600; margin-bottom:8px; color:var(--accent-color);">Scale Story</p>
-                <p>Scaling PM processes across 3 fintech products with 110+ engineers, aligning stakeholder priorities, and reducing dev handoff issues.</p>
-              </div>
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/teardowns/forest'">
+            <div class="tile-content">
+              <span class="card-category">Productivity</span>
+              <h3>Forest</h3>
+              <p class="td-card-insight">Crystal-clear purpose + behavioral hooks = meaningful engagement</p>
             </div>
-            <div class="tile-cta">Read Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="tile-cta">View Teardown &rarr;</div>
           </div>
 
-          <div class="tile-card organic-card" onclick="window.location.hash='#/cases/hilti'">
-            <div>
-              <div class="tile-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <div class="tile-content">
-                <h3>Hilti India</h3>
-                <p class="secondary" style="font-size:11px; text-transform:uppercase; font-weight:600; margin-bottom:8px; color:var(--accent-color);">Strategy Story</p>
-                <p>Uncovering value chain fragmentation in Chennai M&E market from direct site research, mapping a ₹2.5-3Cr opportunity.</p>
-              </div>
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/teardowns/blinkist'">
+            <div class="tile-content">
+              <span class="card-category">Productivity</span>
+              <h3>Blinkist</h3>
+              <p class="td-card-insight">Snackable knowledge delivery tailored to high-intent, low-time professionals.</p>
             </div>
-            <div class="tile-cta">Read Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="tile-cta">View Teardown &rarr;</div>
           </div>
 
-          <div class="tile-card organic-card" onclick="window.location.hash='#/cases/walmart'">
-            <div>
-              <div class="tile-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-              </div>
-              <div class="tile-content">
-                <h3>Walmart BOPIS</h3>
-                <p class="secondary" style="font-size:11px; text-transform:uppercase; font-weight:600; margin-bottom:8px; color:var(--accent-color);">Execution Story</p>
-                <p>Optimizing online-pickup wait times and queue layouts by blending geofenced customer alerts with entrance QR-pickup lockers.</p>
-              </div>
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/teardowns/instagram'">
+            <div class="tile-content">
+              <span class="card-category">Consumer</span>
+              <h3>Instagram</h3>
+              <p class="td-card-insight">Continuous feed evolution: balancing user control with algorithmic discovery.</p>
             </div>
-            <div class="tile-cta">Read Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 3: Product Teardowns -->
-      <section class="snap-slide" id="slide-2">
-        <div class="slide-header">
-          <div class="case-domain-tag">PM Lens</div>
-          <h2>Product Teardowns</h2>
-          <p class="secondary">Critical evaluation of customer hooks and mechanics across 18+ digital applications.</p>
-        </div>
-        <div class="slide-grid-3">
-          <div class="tile-card organic-card" onclick="window.location.hash='#/teardowns/forest'">
-            <div>
-              <div class="td-card-header">
-                <span class="td-card-name">Forest</span>
-                <span class="td-card-tag">Productivity</span>
-              </div>
-              <p class="td-card-insight">"Crystal-clear purpose + behavioral hooks = meaningful engagement"</p>
-            </div>
-            <div class="tile-cta">View Teardown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </div>
-
-          <div class="tile-card organic-card" onclick="window.location.hash='#/teardowns/blinkist'">
-            <div>
-              <div class="td-card-header">
-                <span class="td-card-name">Blinkist</span>
-                <span class="td-card-tag">Productivity</span>
-              </div>
-              <p class="td-card-insight">"Snackable knowledge delivery tailored to high-intent, low-time professionals."</p>
-            </div>
-            <div class="tile-cta">View Teardown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </div>
-
-          <div class="tile-card organic-card" onclick="window.location.hash='#/teardowns/instagram'">
-            <div>
-              <div class="td-card-header">
-                <span class="td-card-name">Instagram</span>
-                <span class="td-card-tag">Consumer</span>
-              </div>
-              <p class="td-card-insight">"Continuous feed evolution: balancing user control with algorithmic discovery."</p>
-            </div>
-            <div class="tile-cta">View Teardown <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="tile-cta">View Teardown &rarr;</div>
           </div>
         </div>
         
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 24px; flex-wrap:wrap; gap: 16px;">
-          <a href="#/teardowns" class="btn btn-primary">Browse All 18+ Teardowns &rarr;</a>
-          <div class="sticky-note" style="margin: 0; max-width: 400px; transform: rotate(1deg);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 32px; flex-wrap:wrap; gap: 16px;">
+          <a href="#/teardowns" class="btn btn-primary" style="background-color: var(--color-red); color: var(--color-light); border: 1px solid var(--color-red);">Browse All 18+ Teardowns</a>
+          <div class="sticky-note" style="margin: 0; max-width: 400px; transform: rotate(0.5deg);">
             <strong>Analysis Habit:</strong> Doing continuous product analysis keeps my PM skills sharp. It is my preferred method to discover new UX solutions.
           </div>
         </div>
       </section>
 
-      <!-- Slide 4: Frameworks -->
-      <section class="snap-slide" id="slide-3">
-        <div class="slide-grid-2">
+      <!-- Slide 3: Philosophy & Frameworks (Red Background) -->
+      <section class="snap-slide" id="slide-3" style="background-color: var(--color-red); color: var(--color-light);">
+        <div class="slide-grid-2" style="align-items: center;">
           <div>
-            <div class="case-domain-tag">Methodology</div>
-            <h2>Pillars & Frameworks</h2>
-            <div class="editorial-quote">
-              "Anticipate emotion, identify root causes, design for systemic interdependencies."
+            <div class="hero-eyebrow-num" style="margin-bottom:12px;">04 / 06</div>
+            <h2 style="color: var(--color-light); font-size: clamp(2.2rem, 4vw, 3.2rem); text-transform: uppercase; font-weight:900; margin-bottom: 16px;">Pillars & <em>Frameworks</em></h2>
+            <div class="editorial-quote-light" style="font-family: var(--font-serif); font-style: italic; font-size: 20px; border-left: 2px solid var(--color-light); padding-left: 16px; margin-bottom: 24px; color: var(--color-light);">
+              Anticipate emotion, identify root causes, design for systemic interdependencies.
             </div>
-            <p>I apply a structured 5-step PM framework to diagnose product structures, establish metrics, and unlock market margins.</p>
+            <p style="color: rgba(255,255,255,0.9); font-size: 15px; margin-bottom: 24px; line-height:1.7;">I apply a structured 5-step PM framework to diagnose product structures, establish metrics, and unlock market margins.</p>
             <div style="margin-top: 24px;">
-              <a href="#/frameworks" class="btn btn-primary">Review Framework & Test Wizard &rarr;</a>
+              <a href="#/frameworks" class="btn btn-secondary" style="border-color: var(--color-light); color: var(--color-light);">Review Framework & Test Wizard &rarr;</a>
             </div>
           </div>
           
           <div class="sub-list" style="gap: 16px;">
-            <div class="competency-item">
-              <h5 style="color: var(--accent-color);">1. Field-Driven Research</h5>
-              <p>Gathering qualitative observations straight from construction sites and retail stores.</p>
+            <div class="competency-item-dark" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 20px; border-radius: 0px;">
+              <h5 style="color: var(--color-light); font-size: 15px; font-weight:700; margin-bottom: 6px; font-family: var(--font-display);">1. Field-Driven Research</h5>
+              <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 0;">Gathering qualitative observations straight from construction sites and retail stores.</p>
             </div>
-            <div class="competency-item">
-              <h5 style="color: var(--accent-color);">2. Systemic Reframing</h5>
-              <p>Diagnosing underlying specification gaps instead of defaulting to pricing discounts.</p>
+            <div class="competency-item-dark" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 20px; border-radius: 0px;">
+              <h5 style="color: var(--color-light); font-size: 15px; font-weight:700; margin-bottom: 6px; font-family: var(--font-display);">2. Systemic Reframing</h5>
+              <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 0;">Diagnosing underlying specification gaps instead of defaulting to pricing discounts.</p>
             </div>
-            <div class="competency-item">
-              <h5 style="color: var(--accent-color);">3. Systems Thinking</h5>
-              <p>Accounting for how digital systems interact with physical workflows and staff incentives.</p>
+            <div class="competency-item-dark" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 20px; border-radius: 0px;">
+              <h5 style="color: var(--color-light); font-size: 15px; font-weight:700; margin-bottom: 6px; font-family: var(--font-display);">3. Systems Thinking</h5>
+              <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 0;">Accounting for how digital systems interact with physical workflows and staff incentives.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Slide 5: Achievements -->
-      <section class="snap-slide" id="slide-4">
-        <div class="slide-header">
-          <div class="case-domain-tag">Metrics Ledger</div>
-          <h2>Achievements & Numbers</h2>
-          <p class="secondary">Quantified ledger of key results obtained across product roles.</p>
+      <!-- Slide 4: Achievements (White Background) -->
+      <section class="snap-slide" id="slide-4" style="background-color: var(--color-light); color: var(--color-dark);">
+        <div class="slide-header-bold">
+          <div class="hero-eyebrow-num" style="margin-bottom:12px; color: var(--color-red);"><span style="color: var(--color-red);">05 / 06</span></div>
+          <h2 style="color: var(--color-dark); font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; font-weight:900; margin-bottom: 8px;">Achievements & <em>Numbers</em></h2>
+          <p style="color: var(--secondary-color); font-size: 14px; max-width: 500px; margin-bottom: 32px;">Quantified ledger of key results obtained across product roles.</p>
         </div>
         <div class="slide-grid-3">
-          <div class="tile-card organic-card" onclick="window.location.hash='#/achievements'">
-            <div class="md-card-num">6+</div>
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/achievements'">
+            <div class="md-card-num" style="color: var(--color-red); font-size: 64px; font-weight:900; font-family: var(--font-display); line-height: 1; margin-bottom: 8px;">6+</div>
             <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">Products Delivered</h3>
-              <p class="secondary" style="font-size: 13px;">Coordinated multi-functional teams for end-to-end release of business, banking, foodtech, and fintech suites.</p>
+              <h3 style="font-size: 18px; margin-bottom: 4px; font-weight: 700;">Products Delivered</h3>
+              <p class="secondary" style="font-size: 13px; color: var(--secondary-color);">Coordinated multi-functional teams for end-to-end release of business, banking, foodtech, and fintech suites.</p>
             </div>
           </div>
-          <div class="tile-card organic-card" onclick="window.location.hash='#/achievements'">
-            <div class="md-card-num">₹2.5-3Cr</div>
+          
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/achievements'">
+            <div class="md-card-num" style="color: var(--color-red); font-size: 64px; font-weight:900; font-family: var(--font-display); line-height: 1; margin-bottom: 8px;">₹2.5-3Cr</div>
             <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">Market TAM Validated</h3>
-              <p class="secondary" style="font-size: 13px;">Mapped and validated for commercial overhead segments during Hilti consulting.</p>
+              <h3 style="font-size: 18px; margin-bottom: 4px; font-weight: 700;">Market TAM Validated</h3>
+              <p class="secondary" style="font-size: 13px; color: var(--secondary-color);">Mapped and validated for commercial overhead segments during Hilti consulting.</p>
             </div>
           </div>
-          <div class="tile-card organic-card" onclick="window.location.hash='#/achievements'">
-            <div class="md-card-num">92%</div>
+
+          <div class="tile-card editorial-card-light" onclick="window.location.hash='#/achievements'">
+            <div class="md-card-num" style="color: var(--color-red); font-size: 64px; font-weight:900; font-family: var(--font-display); line-height: 1; margin-bottom: 8px;">92%</div>
             <div>
-              <h3 style="font-size: 18px; margin-bottom: 4px;">User Satisfaction</h3>
-              <p class="secondary" style="font-size: 13px;">Achieved during field testing for fintech services in rural pilot accounts.</p>
+              <h3 style="font-size: 18px; margin-bottom: 4px; font-weight: 700;">User Satisfaction</h3>
+              <p class="secondary" style="font-size: 13px; color: var(--secondary-color);">Achieved during field testing for fintech services in rural pilot accounts.</p>
             </div>
           </div>
         </div>
-        <div style="margin-top: 24px; display: flex; justify-content:space-between; align-items: center; flex-wrap:wrap; gap: 16px;">
-          <a href="#/achievements" class="btn btn-secondary">Open Impact Dashboard &rarr;</a>
-          <div class="sticky-note" style="margin:0; transform: rotate(-1deg);">
+        
+        <div style="margin-top: 32px; display: flex; justify-content:space-between; align-items: center; flex-wrap:wrap; gap: 16px;">
+          <a href="#/achievements" class="btn btn-primary" style="background-color: var(--color-red); color: var(--color-light); border: 1px solid var(--color-red);">Open Impact Dashboard</a>
+          <div class="sticky-note" style="margin:0; transform: rotate(-0.5deg);">
             <strong>Verify:</strong> All metrics listed on this dashboard are backed by audited project results and direct client surveys.
           </div>
         </div>
       </section>
 
-      <!-- Slide 6: Contact -->
-      <section class="snap-slide" id="slide-5">
-        <div class="slide-grid-2">
-          <div>
-            <div class="case-domain-tag">Get in Touch</div>
-            <h2>Let's Collaborate</h2>
-            <p>If you are looking to scale product operations, optimize user conversion rates, or design market expansion models, let's connect.</p>
-            
-            <div class="sticky-note" style="margin: 24px 0;">
-              "Let's talk about: Product strategy, market research, cross-functional leadership, your next great product"
-            </div>
-            
-            <div style="margin-top: 24px;">
-              <a href="#/contact" class="btn btn-primary">Go to Contact Info &rarr;</a>
+      <!-- Slide 5: Contact & Connect -->
+      <section class="snap-slide" id="slide-5" style="padding: 0;">
+        <div class="hero-split-container">
+          <div class="hero-portrait-col" style="background-color: var(--color-red); padding: 48px; display: flex; flex-direction: column; align-items: start; justify-content: center; color: var(--color-light);">
+            <div class="hero-eyebrow-num" style="margin-bottom:12px; color: var(--color-light);">06 / 06</div>
+            <h2 style="color: var(--color-light); font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; font-weight:900; margin-bottom: 8px;">Let's <em>Collaborate</em></h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 14px; max-width: 450px; line-height:1.7; margin-bottom: 24px;">If you are looking to scale product operations, optimize user conversion rates, or design market expansion models, let's connect.</p>
+            <div class="sticky-note" style="margin: 0; max-width: 400px; color: var(--sticky-text); background-color: var(--sticky-bg); border-color: var(--sticky-border);">
+              Let's talk about: Product strategy, market research, cross-functional leadership, your next great product
             </div>
           </div>
           
-          <div class="about-avatar" style="padding: 40px; text-align: left; align-items: start;">
-            <h4 style="font-size: 22px; margin-bottom: 8px;">Sharon Karishma M</h4>
-            <p style="font-size: 14px; margin-bottom: 12px; color: var(--accent-color); font-weight:600;">sharon.karishma25-01@iimv.ac.in</p>
-            <p style="font-size: 14px; margin-bottom: 16px;">+91 8778254526</p>
-            <a href="https://www.linkedin.com/in/sharon-karishma-m-a991b21ab/" target="_blank" class="btn btn-secondary" style="width: 100%;">Connect on LinkedIn</a>
+          <div style="background-color: var(--color-light); padding: 60px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border-color);">
+            <h4 style="font-size: 24px; font-family: var(--font-display); font-weight:800; margin-bottom: 8px; color: var(--color-dark);">Sharon Karishma M</h4>
+            <p style="font-size: 14px; margin-bottom: 12px; color: var(--color-red); font-weight:700; font-family: var(--font-display);">sharon.karishma25-01@iimv.ac.in</p>
+            <p style="font-size: 14px; margin-bottom: 24px; color: var(--color-dark); font-weight:500;">+91 8778254526</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px;">
+              <a href="mailto:sharon.karishma25-01@iimv.ac.in" class="btn btn-primary" style="background-color: var(--color-red); color: var(--color-light); border: 1px solid var(--color-red);">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email Sharon
+              </a>
+              <a href="https://www.linkedin.com/in/sharon-karishma-m-a991b21ab/" target="_blank" class="btn btn-secondary" style="border-color: var(--color-dark); color: var(--color-dark);">Connect on LinkedIn</a>
+              <a href="Sharon_Karishma_Resume.pdf" download class="btn btn-secondary" style="border-color: var(--color-red); color: var(--color-red); font-weight: 700;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download Resume (PDF)
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -570,141 +556,153 @@ function renderAbout(container) {
   });
 
   container.innerHTML = `
-    <div class="about-hero">
-      <div class="about-pitch">
-        <div class="case-domain-tag">About Sharon</div>
-        <h1 style="font-size: 34px; line-height: 1.35; font-weight: 600; font-family: var(--font-serif); margin-bottom: 28px; color: var(--text-color);">
-          ${data.pitch}
-        </h1>
-        ${bioHTML}
-      </div>
-      <div class="about-avatar" style="flex-direction: column; align-items: center; justify-content: center;">
-        <div class="avatar-image-container">
-          <img src="headshot.jpg" alt="Sharon Karishma M" class="avatar-img">
+    <div class="about-split-container">
+      <div class="about-sidebar-col">
+        <div class="about-sidebar-sticky">
+          <div class="hero-eyebrow-num" style="color: var(--color-red); margin-bottom: 16px;"><span style="color: var(--color-red);">ABOUT SHARON</span></div>
+          <h1 class="about-display-title">SHARON<br>KARISHMA M</h1>
+          <p class="about-display-role" style="font-family: var(--font-display); text-transform: uppercase; font-size:11px; font-weight:800; letter-spacing:0.15em; color: var(--color-red); margin-bottom: 24px;">Business Analyst / Product Owner</p>
+          
+          <div class="about-sidebar-image-wrap">
+            <img src="headshot.jpg" alt="Sharon Karishma M" class="about-sidebar-image">
+            <div class="about-signature-overlay">Sharon Karishma M</div>
+          </div>
+          
+          <div class="social-icon-row" style="display: flex; gap: 8px; margin-top: 16px;">
+            <a href="mailto:sharon.karishma25-01@iimv.ac.in" class="social-icon-box" style="background-color: var(--color-red); color: #FFFFFF; width: 36px; height: 36px; display: flex; align-items:center; justify-content:center; text-decoration:none;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sharon-karishma-m-a991b21ab/" target="_blank" class="social-icon-box" style="background-color: var(--color-red); color: #FFFFFF; width: 36px; height: 36px; display: flex; align-items:center; justify-content:center; text-decoration:none;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="avatar-info" style="text-align: center;">
-          <h4>Sharon Karishma M</h4>
-          <p>Business Analyst / Product Owner</p>
-          <p class="secondary">Graduating Post Graduate Program (PGP) Student at Indian Institute of Management Visakhapatnam</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Key Metrics Glance -->
-    <h2>Impact at a Glance</h2>
-    <div class="about-metrics-glance">
-      ${metricsGlanceHTML}
-    </div>
-
-    <!-- Skills Section ("Signal, not noise") -->
-    <div class="skills-section">
-      <div class="skills-intro">
-        <h2>Signal, not noise</h2>
-      </div>
-      <div class="skills-grid-4">
-        <div class="skills-col">
-          <h4>Product</h4>
-          <ul class="skills-list">
-            <li>Product Strategy & Roadmap</li>
-            <li>PRD & User Stories</li>
-            <li>User Research & Interviews</li>
-            <li>Prioritization (RICE, PIF)</li>
-            <li>A/B Testing Design</li>
-            <li>Agile / Scrum</li>
-          </ul>
-        </div>
-        <div class="skills-col">
-          <h4>Technical</h4>
-          <ul class="skills-list">
-            <li>Gen AI Architecture</li>
-            <li>RAG Pipelines</li>
-            <li>Prompt Engineering</li>
-            <li>Fine-Tuning</li>
-            <li>Context Engineering</li>
-            <li>SQL & Data Analysis</li>
-          </ul>
-        </div>
-        <div class="skills-col">
-          <h4>Tools</h4>
-          <ul class="skills-list">
-            <li>Jira</li>
-            <li>Figma</li>
-            <li>Notion</li>
-            <li>Confluence</li>
-            <li>ServiceNow</li>
-            <li>Claude / ChatGPT</li>
-          </ul>
-        </div>
-        <div class="skills-col">
-          <h4>Soft Skills</h4>
-          <ul class="skills-list">
-            <li>Cross-functional Leadership</li>
-            <li>Stakeholder Communication</li>
-            <li>Root Cause Analysis</li>
-            <li>Data-Driven Decisions</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Journey Roadmap Timeline -->
-    <div class="timeline-section" style="position:relative;">
-      <h2>Career Timeline</h2>
-      <div class="horizontal-timeline">
-        ${timelineNodesHTML}
       </div>
       
-      <div class="sticky-note" style="margin-top: 24px; max-width: 500px;">
-        <strong>Background Note:</strong> Starting from engineering, I transitioned to Cloudrevel managing scale and Hilti solving B2B strategy. Each step built a foundation of systems thinking.
-      </div>
-    </div>
-
-    <!-- Accordion Expandable Sections -->
-    <div class="accordion-wrapper">
-      <!-- Competencies -->
-      <div class="accordion-item" id="accordion-comp">
-        <button class="accordion-header" onclick="toggleAccordion('accordion-comp')">
-          <span>Key Competencies</span>
-          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="accordion-content">
-          <div class="competency-grid">${competencyHTML}</div>
+      <div class="about-content-col">
+        <div class="about-pitch-text" style="font-family: var(--font-serif); font-size: 22px; font-style: italic; line-height: 1.4; color: var(--color-red); margin-bottom: 32px; border-left: 2px solid var(--color-red); padding-left: 20px;">
+          ${data.pitch}
         </div>
-      </div>
-
-      <!-- Strengths -->
-      <div class="accordion-item" id="accordion-strengths">
-        <button class="accordion-header" onclick="toggleAccordion('accordion-strengths')">
-          <span>Distinctive Strengths</span>
-          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="accordion-content">
-          <div class="strengths-list">${strengthsHTML}</div>
+        
+        <div class="about-bio-paragraphs" style="font-size: 15px; line-height: 1.8; color: var(--text-color); margin-bottom: 48px;">
+          ${bioHTML}
         </div>
-      </div>
+        
+        <!-- Key Metrics Glance -->
+        <h2 style="font-family: var(--font-display); font-size:20px; font-weight:800; text-transform:uppercase; margin-bottom: 24px; color: var(--text-color); letter-spacing: 0.05em;">Impact at a Glance</h2>
+        <div class="about-metrics-glance" style="margin-bottom: 48px;">
+          ${metricsGlanceHTML}
+        </div>
 
-      <!-- Full Experience Resume -->
-      <div class="accordion-item" id="accordion-resume">
-        <button class="accordion-header" onclick="toggleAccordion('accordion-resume')">
-          <span>Professional Experience Summary</span>
-          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="accordion-content">
-          <div class="sub-list">
-            <div class="sub-list-item">
-              <span class="item-meta">2026 - Present</span>
-              <h5>PGP Student & Placement Representative @ Indian Institute of Management Visakhapatnam</h5>
-              <p>Driving institutional corporate relations, placing 100+ graduates across top-tier firms. Applying advanced strategy and financial modeling frameworks to product scenarios.</p>
+        <!-- Skills Section ("Signal, not noise") -->
+        <div class="skills-section" style="margin-bottom: 48px;">
+          <h2 style="font-family: var(--font-display); font-size:20px; font-weight:800; text-transform:uppercase; margin-bottom: 24px; color: var(--text-color); letter-spacing: 0.05em;">Signal, not noise</h2>
+          <div class="skills-grid-4">
+            <div class="skills-col">
+              <h4>Product</h4>
+              <ul class="skills-list">
+                <li>Product Strategy & Roadmap</li>
+                <li>PRD & User Stories</li>
+                <li>User Research & Interviews</li>
+                <li>Prioritization (RICE, PIF)</li>
+                <li>A/B Testing Design</li>
+                <li>Agile / Scrum</li>
+              </ul>
             </div>
-            <div class="sub-list-item">
-              <span class="item-meta">Summer 2026</span>
-              <h5>Product Strategy Intern @ Hilti India</h5>
-              <p>Addressed commercial overhead anchoring sales flatlines. Conducted site visits (10+ sites, 34 accounts) to uncover value chain fragmentation and designed Chennai entry playbook with ₹2.5-3Cr potential.</p>
+            <div class="skills-col">
+              <h4>Technical</h4>
+              <ul class="skills-list">
+                <li>Gen AI Architecture</li>
+                <li>RAG Pipelines</li>
+                <li>Prompt Engineering</li>
+                <li>Fine-Tuning</li>
+                <li>Context Engineering</li>
+                <li>SQL & Data Analysis</li>
+              </ul>
             </div>
-            <div class="sub-list-item">
-              <span class="item-meta">2023 - 2025</span>
-              <h5>Business Analyst / Product Owner @ Cloudrevel Innovations</h5>
-              <p>Managed three digital payment products, taking on the Product Owner role to drive requirements and backlog. Scaled platform infrastructure with a 110+ engineering team, improving handoff efficiency by 40% and deploying fully audit-compliant services.</p>
+            <div class="skills-col">
+              <h4>Tools</h4>
+              <ul class="skills-list">
+                <li>Jira</li>
+                <li>Figma</li>
+                <li>Notion</li>
+                <li>Confluence</li>
+                <li>ServiceNow</li>
+                <li>Claude / ChatGPT</li>
+              </ul>
+            </div>
+            <div class="skills-col">
+              <h4>Soft Skills</h4>
+              <ul class="skills-list">
+                <li>Cross-functional Leadership</li>
+                <li>Stakeholder Communication</li>
+                <li>Root Cause Analysis</li>
+                <li>Data-Driven Decisions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey Roadmap Timeline -->
+        <div class="timeline-section" style="position:relative; margin-bottom: 48px;">
+          <h2 style="font-family: var(--font-display); font-size:20px; font-weight:800; text-transform:uppercase; margin-bottom: 24px; color: var(--text-color); letter-spacing: 0.05em;">Career Timeline</h2>
+          <div class="horizontal-timeline">
+            ${timelineNodesHTML}
+          </div>
+          
+          <div class="sticky-note" style="margin-top: 24px; max-width: 500px;">
+            <strong>Background Note:</strong> Starting from engineering, I transitioned to Cloudrevel managing scale and Hilti solving B2B strategy. Each step built a foundation of systems thinking.
+          </div>
+        </div>
+
+        <!-- Accordion Expandable Sections -->
+        <div class="accordion-wrapper" style="margin-bottom: 48px;">
+          <!-- Competencies -->
+          <div class="accordion-item" id="accordion-comp">
+            <button class="accordion-header" onclick="toggleAccordion('accordion-comp')">
+              <span>Key Competencies</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="competency-grid">${competencyHTML}</div>
+            </div>
+          </div>
+
+          <!-- Strengths -->
+          <div class="accordion-item" id="accordion-strengths">
+            <button class="accordion-header" onclick="toggleAccordion('accordion-strengths')">
+              <span>Distinctive Strengths</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="strengths-list">${strengthsHTML}</div>
+            </div>
+          </div>
+
+          <!-- Full Experience Resume -->
+          <div class="accordion-item" id="accordion-resume">
+            <button class="accordion-header" onclick="toggleAccordion('accordion-resume')">
+              <span>Professional Experience Summary</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="sub-list">
+                <div class="sub-list-item">
+                  <span class="item-meta">2026 - Present</span>
+                  <h5>PGP Student & Placement Representative @ Indian Institute of Management Visakhapatnam</h5>
+                  <p>Driving institutional corporate relations, placing 100+ graduates across top-tier firms. Applying advanced strategy and financial modeling frameworks to product scenarios.</p>
+                </div>
+                <div class="sub-list-item">
+                  <span class="item-meta">Summer 2026</span>
+                  <h5>Product Strategy Intern @ Hilti India</h5>
+                  <p>Addressed commercial overhead anchoring sales flatlines. Conducted site visits (10+ sites, 34 accounts) to uncover value chain fragmentation and designed Chennai entry playbook with ₹2.5-3Cr potential.</p>
+                </div>
+                <div class="sub-list-item">
+                  <span class="item-meta">2023 - 2025</span>
+                  <h5>Business Analyst / Product Owner @ Cloudrevel Innovations</h5>
+                  <p>Managed three digital payment products, taking on the Product Owner role to drive requirements and backlog. Scaled platform infrastructure with a 110+ engineering team, improving handoff efficiency by 40% and deploying fully audit-compliant services.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1083,7 +1081,7 @@ function renderTeardownDetail(container, productName) {
         <div class="case-domain-tag">${td.category} | ${td.domain}</div>
       </div>
       <h1 style="margin-bottom:8px;">${td.name} Teardown</h1>
-      <p class="td-header-insight">"${td.insight}"</p>
+      <p class="td-header-insight">${td.insight}</p>
     </div>
 
     <div class="teardown-grid-layout">
@@ -1497,6 +1495,27 @@ function render404(container) {
     </div>
   `;
 }
+
+// Dynamic Scroll Progress Bar Listener
+window.addEventListener('scroll', () => {
+  const progress = document.getElementById('progress');
+  if (!progress) return;
+  
+  const snapContainer = document.getElementById('snap-container');
+  if (snapContainer && window.innerWidth > 1024) {
+    const scrollTop = snapContainer.scrollTop;
+    const docHeight = snapContainer.scrollHeight - snapContainer.clientHeight;
+    if (docHeight > 0) {
+      progress.style.width = ((scrollTop / docHeight) * 100) + '%';
+    }
+  } else {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight > 0) {
+      progress.style.width = ((scrollTop / docHeight) * 100) + '%';
+    }
+  }
+});
 
 // Start application
 window.addEventListener('DOMContentLoaded', init);
